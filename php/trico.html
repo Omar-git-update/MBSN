@@ -1,0 +1,1167 @@
+<DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فريق النخبة الملكي - متجر الفريق</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      
+        :root {
+            --main-green: #006341;
+            --light-green: #00a859;
+            --gold: #d4af37;
+            --dark-gold: #b38f2b;
+            --white: #ffffff;
+            --dark-bg: #0a0a0a;
+            --light-bg: #1a1a1a;
+            --text-light: rgba(255, 255, 255, 0.9);
+            --text-muted: rgba(255, 255, 255, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+       
+        .header-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 12px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .header-nav.scrolled {
+            padding: 8px 0;
+            background: rgba(10, 10, 10, 0.95);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.03);
+        }
+
+        .logo img {
+            height: 48px;
+            width: auto;
+            margin-left: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .logo-text {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 5 rem;
+            text-decoration: none;
+            background: linear-gradient(to right, var(--gold), var(--dark-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-item {
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 12px;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: calc(100% - 24px);
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+        }
+
+        .nav-link.active {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn:hover {
+            transform: scale(1.1);
+        }
+  footer-section {
+            padding: 15px;
+            text-align: center;
+            background: linear-gradient(90deg, var(--dark-bg), var(--light-bg));
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+   
+        @media (max-width: 992px) {
+            .nav-item {
+                margin: 0 8px;
+            }
+            
+            .nav-link {
+                font-size: 1rem;
+                padding: 6px 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--dark-bg);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding: 80px 30px 30px;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                border-left: 1px solid rgba(212, 175, 55, 0.4);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-item {
+                margin: 0;
+                width: 100%;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            
+            .nav-link {
+                display: block;
+                padding: 15px 0;
+                font-size: 1.1rem;
+            }
+            
+            .nav-link::after {
+                display: none;
+            }
+            
+            .product-card {
+                max-width: 100%;
+                margin: 100px auto 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                height: 42px;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .product-card {
+                margin: 80px auto 30px;
+            }
+        }
+            }
+   */
+    .footer {
+        background: linear-gradient(to right, #0a1a0f, #0a0a0a);
+        color: var(--white);
+        padding: 60px 0 20px;
+        border-top: 1px solid rgba(212, 175, 55, 0.2);
+        position: relative;
+    }
+    
+    .footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(to right, var(--main-green), var(--gold));
+    }
+    
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+    
+    .footer-section {
+        padding: 0 15px;
+    }
+    
+    .footer-title {
+        color: var(--gold);
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+    
+    .footer-title::after {
+        content: '';
+        position: absolute;
+        width: 50px;
+        height: 2px;
+        background: var(--gold);
+        bottom: 0;
+        right: 0;
+    }
+    
+    .footer-about {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    
+    .footer-social {
+        display: flex;
+        gap: 15px;
+    }
+    
+    .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: var(--white);
+        transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+        background: var(--gold);
+        color: var(--dark-bg);
+        transform: translateY(-3px);
+    }
+    
+    .footer-links {
+        list-style: none;
+    }
+    
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: block;
+        padding: 5px 0;
+    }
+    
+    .footer-links a:hover {
+        color: var(--gold);
+        padding-right: 5px;
+    }
+    purchase-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .product-display {
+            background: linear-gradient(145deg, var(--light-bg), var(--dark-bg));
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-display::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .product-title {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+             margin-top: 30px
+        }
+
+        .product-image-container {
+            width: 100%;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .product-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            color: var(--gold);
+            text-align: center;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .old-price {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+
+     
+        .purchase-form {
+            background: linear-gradient(145deg, var(--light-bg), var(--dark-bg));
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .form-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            color: var(--white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: var(--gold);
+            pointer-events: none;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px 15px 12px 35px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            color: var(--white);
+            font-size: 1rem;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .size-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .size-option {
+            flex: 1;
+            text-align: center;
+        }
+
+        .size-input {
+            display: none;
+        }
+
+        .size-label {
+            display: block;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .size-input:checked + .size-label {
+            background: var(--gold);
+            color: var(--dark-bg);
+            border-color: var(--gold);
+            font-weight: 600;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            border: none;
+            border-radius: 8px;
+            color: var(--dark-bg);
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        
+        @media (max-width: 992px) {
+            .purchase-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .product-image-container {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-title {
+                font-size: 1.5rem;
+            }
+            
+            .form-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-image-container {
+                height: 250px;
+            }
+            
+            .product-price {
+                font-size: 1.5rem;
+            }
+        }
+    
+.product-image-frame {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    padding: 15px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.gold-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid var(--gold);
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.product-image-frame:hover .image-overlay {
+    opacity: 1;
+}
+
+.zoom-icon {
+    font-size: 2rem;
+    color: var(--gold);
+    background: rgba(0,0,0,0.7);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.price-summary {
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px dashed var(--gold);
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.total-price {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid var(--gold);
+}
+
+.delivery-select {
+    background: transparent;
+    border: none;
+    color: var(--gold);
+    font-weight: 600;
+    text-align: left;
+    padding: 5px;
+}
+
+.product-title {
+    position: relative;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 2rem;
+    top: 20px;
+}
+
+.gold-text {
+    background: linear-gradient(to right, var(--gold), var(--dark-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+.white-text {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.season-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--dark-bg);
+    padding: 3px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+
+.product-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--main-green);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 700;
+    z-index: 2;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+    .product-image {
+    transition: transform 0.5s, filter 0.5s;
+}
+
+.product-image:hover {
+    transform: scale(1.03);
+    filter: brightness(1.1) contrast(1.1);
+}
+    .submit-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255,255,255,0.3),
+        rgba(255,255,255,0)
+    );
+    transform: rotate(30deg);
+    transition: all 0.5s;
+}
+
+.submit-btn:hover::after {
+    left: 100%;
+}
+    
+   .container {
+    max-width: 1500px;
+    width: 97%;
+}
+
+.purchase-section {
+    gap: 50px; /* زيادة المسافة بين القسمين */
+}
+
+.product-display, 
+.purchase-form {
+    padding: 35px; /* زيادة المساحة الداخلية */
+}
+    @media (min-width: 1400px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .product-image {
+        max-height: 400px;
+    }
+}
+    .form-hint {
+    display: block;
+    margin-top: 5px;
+    color: var(--gold);
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.form-input:valid {
+    border-color: var(--light-green);
+}
+
+.form-input:invalid:not(:placeholder-shown) {
+    border-color: #ff4d4d;
+}
+    </style>
+      
+</head>
+<body>
+    
+    <header class="header-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logooo.png" alt="شعار الفريق">
+                <span class="logo-text">MBSN CLUB</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="قائمة الهاتف">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">العودة للرئيسية</a>
+                </li>
+                <li class="nav-item">
+                    <a href="market.html" class="nav-link">متجر الفريق</a>
+                </li>
+                
+               
+            </ul>
+        </div>
+    </header>
+  <div class="container">
+        <div class="purchase-section">
+            
+            <div class="product-display">
+    
+    <h2 class="product-title">
+        
+        <span class="gold-text">قميص الفريق</span>
+        
+    </h2>
+    
+    <div class="product-image-frame">
+        <div class="gold-frame"></div>
+        <img src="logooo.png" alt="قميص الفريق" class="product-image">
+        <div class="image-overlay">
+            <span class="zoom-icon"><i class="fas fa-search-plus"></i></span>
+        </div>
+    </div>
+    
+    <div class="product-meta">
+        <div class="meta-item">
+            <i class="fas fa-tshirt gold-icon"></i>
+            <span>خامة قطنية 100%</span>
+        </div>
+        <div class="meta-item">
+            <i class="fas fa-medal gold-icon"></i>
+            <span>نسخة رسمية</span>
+        </div>
+    </div>
+            
+            <div class="purchase-form">
+                <h2 class="form-title">إتمام عملية الشراء</h2>
+               <form action="https://formspree.io/f/moveznoa" method="POST" data-redirect="thanks.html">
+                    <div class="form-group">
+                        <label for="firstName" class="form-label">الاسم</label>
+                        <input type="text" id="firstName" name="first name" class="form-input" required placeholder="أدخل اسمك">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName" class="form-label">اللقب</label>
+                        <input type="text" id="lastName" name="last name" class="form-input" required placeholder="أدخل لقبك">
+                    </div>
+                    
+                    <div class="form-group">
+    <label for="phone" class="form-label">رقم الهاتف</label>
+    <input type="tel" id="phone" name="phone" class="form-input" required 
+           placeholder="مثال: 0551234567"
+           pattern="^(05|06|07)[0-9]{8}$"
+           maxlength="10">
+    <small class="form-hint"> أدخل رقم صالح </small>
+</div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">اختر المقاس</label>
+                        <div class="size-options">
+                            <div class="size-option">
+                                <input type="radio" id="size-s" name="size" value="S" class="size-input" checked>
+                                <label for="size-s" class="size-label">S</label>
+                            </div>
+                            <div class="size-option">
+                                <input type="radio" id="size-m" name="size" value="M" class="size-input">
+                                <label for="size-m" class="size-label">M</label>
+                            </div>
+                            <div class="size-option">
+                                <input type="radio" id="size-l" name="size" value="L" class="size-input">
+                                <label for="size-l" class="size-label">L</label>
+                            </div>
+                            <div class="size-option">
+                                <input type="radio" id="size-xl" name="size" value="XL" class="size-input">
+                                <label for="size-xl" class="size-label">XL</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="wilaya" class="form-label">الولاية</label>
+                        <div class="select-wrapper">
+                            <select id="wilaya" name="wilaya" class="form-select" required>
+                                <option value="" disabled selected>اختر ولايتك</option>
+                                <option value="1">أدرار</option>
+                                <option value="2">الشلف</option>
+                                <option value="3">الأغواط</option>
+                                <option value="4">أم البواقي</option>
+                                <option value="5">باتنة</option>
+                                <option value="6">بجاية</option>
+                                <option value="7">بسكرة</option>
+                                <option value="8">بشار</option>
+                                <option value="9">البليدة</option>
+                                <option value="10">البويرة</option>
+                                <option value="11">تمنراست</option>
+                                <option value="12">تبسة</option>
+                                <option value="13">تلمسان</option>
+                                <option value="14">تيارت</option>
+                                <option value="15">تيزي وزو</option>
+                                <option value="16">الجزائر</option>
+                                <option value="17">الجلفة</option>
+                                <option value="18">جيجل</option>
+                                <option value="19">سطيف</option>
+                                <option value="20">سعيدة</option>
+                                <option value="21">سكيكدة</option>
+                                <option value="22">سيدي بلعباس</option>
+                                <option value="23">عنابة</option>
+                                <option value="24">قالمة</option>
+                                <option value="25">قسنطينة</option>
+                                <option value="26">المدية</option>
+                                <option value="27">مستغانم</option>
+                                <option value="28">المسيلة</option>
+                                <option value="29">معسكر</option>
+                                <option value="30">ورقلة</option>
+                                <option value="31">وهران</option>
+                                <option value="32">البيض</option>
+                                <option value="33">إليزي</option>
+                                <option value="34">برج بوعريريج</option>
+                                <option value="35">بومرداس</option>
+                                <option value="36">الطارف</option>
+                                <option value="37">تندوف</option>
+                                <option value="38">تيسمسيلت</option>
+                                <option value="39">الوادي</option>
+                                <option value="40">خنشلة</option>
+                                <option value="41">سوق أهراس</option>
+                                <option value="42">تيبازة</option>
+                                <option value="43">ميلة</option>
+                                <option value="44">عين الدفلى</option>
+                                <option value="45">النعامة</option>
+                                <option value="46">عين تيموشنت</option>
+                                <option value="47">غرداية</option>
+                                <option value="48">غليزان</option>
+                                <option value="49">تيميمون</option>
+                                <option value="50">برج باجي مختار</option>
+                                <option value="51">أولاد جلال</option>
+                                <option value="52">بني عباس</option>
+                                <option value="53">عين صالح</option>
+                                <option value="54">عين قزام</option>
+                                <option value="55">تقرت</option>
+                                <option value="56">جانت</option>
+                                <option value="57">المغير</option>
+                                <option value="58">المنيعة</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address" class="form-label">العنوان التفصيلي</label>
+                        <textarea id="address" name="address" class="form-input" rows="3" required placeholder="الحي، الشارع، رقم المنزل"></textarea>
+                    </div>
+                         <h2 class="form-title">
+            <i class="fas fa-shopping-cart"></i>
+            تفاصيل الشراء
+        </h2>
+        <div class="price-summary">
+            <div class="price-row">
+                <span>سعر القميص:</span>
+                <span class="price">2490 د.ج</span>
+            </div>
+            <div class="price-row delivery-option">
+                <span>طريقة التوصيل:</span>
+                <select id="deliveryMethod" name="deliveryMethod" class="delivery-select">
+                    <option value="home" data-fee="500">توصيل للمنزل (+500 د.ج)</option>
+                    <option value="office" data-fee="0">استلام من المكتب (مجاني)</option>
+                </select>
+            </div>
+            <div class="total-price">
+                <span>المجموع:</span>
+                <span id="totalPrice" class="price">2990 د.ج</span>
+            </div>
+                    <input type="hidden" name="totalPrice" id="hiddenTotalPrice">
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-shopping-cart"></i> تأكيد الطلب
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">مواقع التواصل الإجتماعي</h3>
+                <p class="footer-about">زرنا  في صفحاتنا على مواقع التواصل الإجتماعي عبر الروابط أدناه</p>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            
+            
+            <div class="footer-section">
+                <h3 class="footer-title">خدمات الفريق</h3>
+                <ul class="footer-links">
+                   
+                    <li><a href="market.html">متجر الفريق</a></li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">العودة للرئيسية</a></li>
+                    
+                </ul>
+            </div>
+            
+        <div class="footer-bottom">
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة MBSN ©</p>
+            </div>
+           
+        </div>
+    </div>
+</footer>
+<script> 
+        
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+       
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        
+        window.addEventListener('scroll', function() {
+            const headerNav = document.querySelector('.header-nav');
+            if (window.scrollY > 50) {
+                headerNav.classList.add('scrolled');
+            } else {
+                headerNav.classList.remove('scrolled');
+            }
+        });
+        
+      
+        const purchaseForm = document.getElementById('purchaseForm');
+        if (purchaseForm) {
+            purchaseForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                
+                const submitBtn = this.querySelector('button[type="submit"]');
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري المعالجة...';
+                submitBtn.disabled = true;
+                
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> تمت العملية بنجاح';
+                    submitBtn.style.background = 'linear-gradient(135deg, var(--light-green), var(--main-green))';
+                    
+                    
+                    alert('شكراً لشرائك من متجرنا! سيتم التواصل معك لتأكيد الطلب.');
+                    
+                
+                    setTimeout(() => {
+                        this.reset();
+                        submitBtn.innerHTML = '<i class="fas fa-shopping-cart"></i> تأكيد الطلب';
+                        submitBtn.style.background = 'linear-gradient(135deg, var(--gold), var(--dark-gold))';
+                        submitBtn.disabled = false;
+                    }, 6000);
+                }, 2000);
+            });
+        }
+        
+function calculateTotal() {
+    const basePrice = 2490;
+    const deliveryMethod = document.getElementById('deliveryMethod');
+    const deliveryFee = parseInt(deliveryMethod.options[deliveryMethod.selectedIndex].dataset.fee);
+    const totalPrice = basePrice + deliveryFee;
+    
+    document.getElementById('totalPrice').textContent = totalPrice + ' د.ج';
+}
+
+
+document.getElementById('deliveryMethod').addEventListener('change', calculateTotal);
+
+
+window.addEventListener('load', calculateTotal);
+        
+        document.getElementById('phone').addEventListener('input', function(e) {
+    
+    let phoneNumber = this.value.replace(/\D/g, '');
+    
+   
+    if (phoneNumber.length > 0 && phoneNumber[0] !== '0') {
+        phoneNumber = '0' + phoneNumber;
+    }
+    
+    
+    if (phoneNumber.length > 10) {
+        phoneNumber = phoneNumber.substring(0, 10);
+    }
+    
+    
+    if (phoneNumber.length >= 2) {
+        const prefix = phoneNumber.substring(0, 2);
+        if (!['05', '06', '07'].includes(prefix)) {
+            
+            phoneNumber = phoneNumber.substring(0, phoneNumber.length - 1);
+        }
+    }
+    
+    this.value = phoneNumber;
+    
+    
+    if (this.value.length === 10 && ['05', '06', '07'].includes(this.value.substring(0, 2))) {
+        this.style.borderColor = '#00a859';
+    } else {
+        this.style.borderColor = '#d4af37';
+    }
+});
+        
+document.getElementById('firstNameInput').value = document.getElementById('firstName').value;
+document.getElementById('lastNameInput').value = document.getElementById('lastName').value;
+document.getElementById('phoneInput').value = document.getElementById('phone').value;
+document.getElementById('sizeInput').value = document.querySelector('input[name="size"]:checked').value;
+document.getElementById('wilayaInput').value = document.getElementById('wilaya').value;
+document.getElementById('addressInput').value = document.getElementById('address').value;
+document.getElementById('deliveryInput').value = document.getElementById('deliveryMethod').options[document.getElementById('deliveryMethod').selectedIndex].text;
+document.getElementById('totalInput').value = document.getElementById('totalPrice').textContent;
+
+
+document.getElementById('purchaseForm').submit();
+        
+        function calculateTotal() {
+    const basePrice = 2490;
+    const deliveryMethod = document.getElementById('deliveryMethod');
+    const deliveryFee = parseInt(deliveryMethod.options[deliveryMethod.selectedIndex].dataset.fee);
+    const totalPrice = basePrice + deliveryFee;
+    
+    document.getElementById('totalPrice').textContent = totalPrice + ' د.ج';
+    document.getElementById('hiddenTotalPrice').value = totalPrice;
+}
+        </script>
+    </body>
+    </html>
